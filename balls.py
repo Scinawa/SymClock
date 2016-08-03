@@ -8,19 +8,28 @@ class Balls:
 
     # lo stato e' del tipo [0,3,1,2]
     def change_state(self, info):
+        """
+        Parliami un po' di te.. cosa fai?
+        :param info:
+        :return:
+        """
         r = range(4)
         s = []
+
         self.bs[0].state = r[info / 6]
         s.append(r[info / 6])
         r.remove(r[info / 6])
         info %= 6
+
         self.bs[1].state = r[info / 2]
         s.append(r[info / 2])
         r.remove(r[info / 2])
         info %= 2
+
         self.bs[2].state = r[info]
         s.append(r[info])
         r.remove(r[info])
+
         self.bs[3].state = r[0]
         s.append(r[0])
         self.state = s
@@ -30,7 +39,8 @@ class Balls:
 
 
 class Ball:
-    # forse non e' bellissimo che i colori siano cablati dentro con riferimento a settings. Metterli in costruttore?
+    # forse non e' bellissimo che i colori siano cablati dentro con riferimento a settings.
+    # Metterli in costruttore?
     def __init__(self, surface):
         self._w, self._h = surface.get_size()
         self.state = 0
@@ -48,3 +58,9 @@ class Ball:
             r, g, b = settings.Hours[3]['color']
         pygame.draw.circle(self.surface, pygame.Color(r, g, b),
                            (self._w / 2, self._h / 2), self._w / 2)
+
+
+# non standardissimo: solitamente le classi hanno sempre il plurale e i nomi
+# degli oggetti istanziati sono sempre al singolare. io cambierei il nome di
+# questa classe, che serve praticamente solo per renderizzare in
+# qualcos'altro...

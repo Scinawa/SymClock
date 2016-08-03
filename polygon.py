@@ -1,11 +1,19 @@
 # memorizzare le immagini disegnate in modo da non ridisegnarle
 
 import pygame, math
+import configparser
 
-
-class Polygon:  # fare in modo che la simmetria del triangolo sia quella giusta
+class Polygon:  #TODO fare in modo che la simmetria del triangolo sia quella
+# giusta
 
     def __init__(self, surface, colors, offset):
+        """
+        Wut?
+        :param surface:
+        :param colors:
+        :param offset:
+        :return:
+        """
         self.n = len(colors)
         self._w, self._h = surface.get_size()  # comunque e' per superfici quadrate, darlo per assunto?
         self.state = False, 0  # (i,j)   i = True,False per la simmetria, j = 0,...,n-1 per la rotazione
@@ -34,7 +42,14 @@ class Polygon:  # fare in modo che la simmetria del triangolo sia quella giusta
             self.surface = pygame.transform.flip(self.surface, True, False)
 
 
-def drawPol(ps, colors, surface):  # funziona meglio per poligoni regolari
+def drawPol(ps, colors, surface):
+    """
+    Funziona meglio per poligono regolari
+    :param ps:
+    :param colors:
+    :param surface:
+    :return:
+    """
 
     def color(i, j):
         r, g, b = 0, 0, 0
@@ -55,6 +70,12 @@ def drawPol(ps, colors, surface):  # funziona meglio per poligoni regolari
         return [w / total for w in ws]
 
     def inside(q, ps):
+        """
+        Percepisco bene e male assieme. Cosa è?
+        :param q:
+        :param ps:
+        :return:
+        """
         def angle(p, q, r):
             def arg(x, y):
                 if (x, y) == (0, 0):

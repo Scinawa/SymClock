@@ -19,9 +19,10 @@ class Clock:
         self.mins = mins
 
     def display_time(self):
-        h, m = time.localtime()[3:5]
+        h, m = time.localtime()[3:5]  # sure? check
         self.hours.change_state(h)
-        self.decamins.change_state(m / 10)
+        self.decamins.change_state(m / 10) # dovrebbe cambiare la divisione
+        # tra 2.7 e 3 passando da int a float... ocjio
         self.mins.change_state(m % 10)
 
     def test_time(self, h, m):
@@ -41,4 +42,7 @@ if __name__ == "__main__":
 
 
 
-# non mi piace molto l'organizzazione, meglio da clock aggiungere gli elementi al layout forse
+# non mi piace molto l'organizzazione,
+# meglio da clock aggiungere gli elementi al layout forse
+
+# cioè?
